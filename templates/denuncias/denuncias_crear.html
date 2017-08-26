@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<style>
+   .banner{ 
+   background-color: white;
+} 
+</style>
+{% if messages %}
+<div class="alert alert-success">
+    {% for m in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
+    {% endfor %}
+</div>
+{% endif %}
+<br>
+<h1 style="text-align: center">Realiza tu Denuncia</h1>
+<div class="w3agile properties">
+	<div class="form-group row">
+		<form method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<div id="mapa"></div><br>
+				<button type="submit" class="btn btn-primary">Registrar</button>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+
+

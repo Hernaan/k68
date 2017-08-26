@@ -1,0 +1,147 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="content">
+				<!-- banner -->
+				<div class="banner">
+					<div id="kb" class="carousel kb_elastic animate_text kb_wrapper" data-ride="carousel" data-interval="6000" data-pause="hover">
+						<!-- Wrapper-for-Slides -->
+						<div class="carousel-inner" role="listbox"> 
+							<!-- First-Slide -->
+							<div class="item active">
+								<div class="banner-img"> 
+									<div class="carousel-caption kb_caption">
+										<h3 href="{% url 'denuncias:denuncia_crear' %}" data-animation="animated flipInX">Realizar Denuncia</h3>  
+									</div>
+								</div>
+							</div> 
+							<!-- Second-Slide -->
+							<div class="item">
+								<div class="banner-img banner-img1"> 
+									<div class="carousel-caption kb_caption kb_caption_right">
+										<h3 data-animation="animated flipInX">Realizar Denuncia</h3> 
+									</div>
+								</div>
+							</div> 
+							<!-- Third-Slide -->
+							<div class="item">
+								<div class="banner-img banner-img2"> 
+									<div class="carousel-caption kb_caption kb_caption_center">
+										<h3 data-animation="animated flipInX">Realizar Denuncia</h3> 
+									</div>
+								</div>
+							</div> 
+						</div> 
+						<!-- Left-Button -->
+						<a class="left carousel-control kb_control_left" href="#kb" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a> 
+						<!-- Right-Button -->
+						<a class="right carousel-control kb_control_right" href="#kb" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a> 
+					</div>
+					<script src="js/custom.js"></script>
+				</div>
+				<!-- //banner -->
+				<!-- welcome -->
+				<div class="welcome"> 
+					<h3 class="w3ls-title">Bienvenido !</h3> 
+					<p class="w3title-text">Emergencias K68 es una aplicacion de denuncias de incidentes desarrollada para el Cuerpo de Bomberos Voluntarios de Caacupe-K68 </p>
+					
+							<!-- modal-three --> 
+							<div id="small-dialog2" class="mfp-hide">
+								<div class="login-modal w3ls-search">  
+									<div class="booking-info">
+										<h3><a href="main.html">Emergencias K68</a></h3>
+									</div>
+									<div class="login-form">
+										<form action="#" method="post">
+											<input type="text"  name="city name" placeholder="City Name..." required="">
+											<input type="number" name="rooms" placeholder="Bed Rooms" min="1" required=""> 
+											<input type="number" name="rooms" placeholder="Bath rooms" min="1"  required=""> 
+											<div class="price">
+												<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+												<input type="text" placeholder="From" required="">
+											</div>
+											<div class="price price-right">
+												<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+												<input type="text" placeholder="To" required="">
+											</div>
+											<select class="form-control"> 
+												<option value="">Rental</option> 
+												<option value="">Buy</option> 
+												<option value="">sale</option>  
+											</select>
+											<input type="submit" value="Search">		
+										</form>  
+									</div>
+								</div>
+							</div>
+							<!-- //modal-three --> 
+						</div>  
+					</div>  	
+				</div> 
+				<!-- //welcome -->
+				<!-- properties -->
+				<div class="w3agile properties">
+					<div class="properties-top">
+						<h3 class="w3ls-title">Servicios que prestamos</h3>
+						<p class="w3title-text">Un resumen de las acctividades que realizan los bomberos. </p>
+					</div> 
+					<div class="properties-bottom">
+						<div class="properties-img">
+							<img src="/static/denuncias/images/3.jpg" alt="">
+							<div class="view-caption">
+								<h4><span class="glyphicon glyphicon-map-marker"></span> Incendios </h4>  
+							</div>
+							<div class="w3ls-buy">
+								<a href="{% url 'denuncias:denuncia_crear' %}">5</a> 
+							</div>
+						</div>
+						<div class="w3ls-text">
+							<h5><a href="{% url 'denuncias:denuncia_crear' %}">Reportar un Incendio</a></h5>
+						</div>
+					</div> 
+					<div class="properties-bottom">
+						<div class="properties-img">
+							<img src="/static/denuncias/images/rescate.jpg" alt="">
+							<div class="view-caption rent-caption">
+								<h4><span class="glyphicon glyphicon-map-marker"></span> Accidentes </h4>  
+							</div>
+							<div class="w3ls-buy">
+								<a href="{% url 'denuncias:denuncia_crear' %}" class="rent">10</a> 
+							</div>
+						</div>
+						<div class="w3ls-text">
+							<h5><a href="{% url 'denuncias:denuncia_crear' %}">Reportar un Accidente </a></h5>
+						</div>
+					</div>
+					<div class="properties-bottom">
+						<div class="properties-img">
+							<img src="/static/denuncias/images/yo.jpg" alt="">
+							<div class="view-caption">
+								<h4><span class="glyphicon glyphicon-map-marker"></span> Primeros Auxilios </h4>  
+							</div>
+							<div class="w3ls-buy">
+								<a href="{% url 'denuncias:denuncia_crear' %}">7</a> 
+							</div>
+						</div>
+						<div class="w3ls-text">
+							<h5><a href="{% url 'denuncias:denuncia_crear' %}">Reportar a un lesionado </a></h5>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div> 
+				<!-- //properties -->
+				
+			</div>
+		</div>
+	</div> 
+
+    
+{% endblock content %}
+
+
