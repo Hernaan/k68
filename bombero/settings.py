@@ -124,6 +124,11 @@ LOGIN_REDIRECT_URL = reverse_lazy('denuncias:index')
 
 
 
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+
+
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
