@@ -8,6 +8,9 @@
 </style>
 {% if messages %}
 <div class="alert alert-success">
+	<button class="close" data-dismiss="alert">
+		<span>&times;</span>
+	</button>
     {% for m in messages %}
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
     {% endfor %}
@@ -19,6 +22,19 @@
 	<div class="form-group row">
 		<form method="post">
 			{% csrf_token %}
+			<style>
+				label[for=id_lat]
+					{
+					   display : none;
+					}
+				label[for=id_lng]
+					{
+					   display : none;
+					}
+
+				#id_lat { display : none; }
+				#id_lng { display : none; }
+			</style>
 			{{ form.as_p }}
 			<div id="mapa"></div><br>
 				<button type="submit" class="btn btn-primary">Registrar</button>
