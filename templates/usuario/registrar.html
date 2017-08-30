@@ -58,7 +58,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								<input type="password" placeholder="Confirmar contraseña" name="password2" required=""/>
 							</div>
 							<div class="login-check">
-								 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Acepto los <a href="#">terminos &amp; condiciones</a></label>
+								  <label class="">Al registrarte <a href="{% url 'denuncias:terminos' %}">estaras aceptando los terminos &amp; condiciones</a></label>
 							</div>
 							<div class="bottom">
 								<input type="submit" value="Crear cuenta" />

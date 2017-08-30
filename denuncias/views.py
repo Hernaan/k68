@@ -78,3 +78,6 @@ def contacto(request):
 
 def nosotros(request):
 	return render(request, 'denuncias/nosotros.html')
+
+def terminos(request):
+	return render(request, 'denuncias/terminos.html')

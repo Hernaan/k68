@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from denuncias.views import index, DenunciaCreate, listar, detail, check_pubs, listaDetalles, contacto, nosotros
-from denuncias.views import RegistroUsuario
+from denuncias.views import RegistroUsuario, terminos
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
@@ -14,4 +14,5 @@ urlpatterns = [
 	url(r'^detalles/', listaDetalles, name='listaDetalles'),
 	url(r'^contacto', login_required(contacto), name='contacto'),
 	url(r'^nosotros', login_required(nosotros), name='nosotros'),
+	url(r'^terminos', terminos, name='terminos'),
 ]
