@@ -23,6 +23,7 @@
 		<form method="post">
 			{% csrf_token %}
 			<style>
+
 				label[for=id_lat]
 					{
 					   display : none;
@@ -36,6 +37,7 @@
 				#id_lng { display : none; }
 			</style>
 			{{ form.as_p }}
+			<br>
 			<div id="mapa"></div><br>
 				<button type="submit" class="btn btn-primary">Registrar</button>
 			</div>

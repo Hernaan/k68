@@ -38,82 +38,33 @@
 
 
 {% block js %}
-<br>
-    <div class="container">
 
-<div id="mapa2" style="border:1px solid #999;height:200px">
-    Cargando mapa ...
-  </div>
-  <script type="text/javascript">
-    var divMapa = document.getElementById('mapa2');
-    navigator.geolocation.getCurrentPosition( fn_ok, fn_mal );
-    function fn_mal(){}
-    function fn_ok( rta ){
-      var lat = {{ denuncia.lat }}
-      var lon = {{ denuncia.lng }}
+<div id="map" class="map"></div>
+    <script>
+        var map = L.map('map');
 
-      var gLatLon = new google.maps.LatLng( lat, lon );
-      var objConfig = {
-        zoom: 10,
-        center: gLatLon
-      }
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-      var gMapa = new google.maps.Map( divMapa, objConfig );
+var control = L.Routing.control(L.extend(window.lrmConfig, {
+    waypoints: [
+        L.latLng({{ denuncia.lat }}, {{ denuncia.lng }}),
+        L.latLng(-25.3883093, -57.1613266)
+    ],
+    geocoder: L.Control.Geocoder.nominatim(),
+    routeWhileDragging: true,
+    reverseWaypoints: true,
+    showAlternatives: true,
+    altLineOptions: {
+        styles: [
+            {color: 'black', opacity: 0.15, weight: 9},
+            {color: 'white', opacity: 0.8, weight: 6},
+            {color: 'blue', opacity: 0.5, weight: 2}
+        ]
+    }
+})).addTo(map);
 
-
-      var objConfigMarker = {
-        position: gLatLon,
-        map: gMapa,
-        title: "Usted esta aqui"
-      }
-      var gMarker = new google.maps.Marker( objConfigMarker );
-      
-      var gCoder = new google.maps.Geocoder( );
-      var objInformacion = {
-        address: 'Terminal De Omnibus de Caacupé'
-      }
-        gCoder.geocode( objInformacion, fn_coder );
-
-      function fn_coder( datos ){
-        var coordenadas = datos[0].geometry.location;
-
-        var config = {
-          map: gMapa,
-          position: coordenadas,
-          title: 'Banco'
-        }
-
-        var gMarkerDV = new google.maps.Marker( config )
-          
-      }
-      var objConfigDR = {
-        map: gMapa
-      }
-
-      var objConfigDS = {
-        origin: gLatLon,
-        destination: objInformacion.address,
-        //destination: 'Itapua, Molas Lopez, Asuncion',
-        travelMode: google.maps.TravelMode.DRIVING
-
-      }
-
-      var ds = new google.maps.DirectionsService( );
-      var dr = new google.maps.DirectionsRenderer( objConfigDR );
-
-        ds.route( objConfigDS, fnRutear );
-
-      function fnRutear( resultados, status ){
-        if( status == 'OK'){
-          dr.setDirections( resultados );
-        }else{
-          alert('No se encontro una ruta disponble al lugar del Incendente!'+status);
-        }
-
-      }
-      }
-  
-  </script>
-  </div>
-</div>
+L.Routing.errorControl(control).addTo(map);
+    </script>
 {% endblock js %}
