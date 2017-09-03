@@ -1,6 +1,12 @@
 {% extends 'base/base.html' %}
 
 {% block navbar%}
+{% if user.is_authenticated %}
+<script>
+    window.location.href = "{% url 'denuncias:index' %}";
+</script>
+
+{% else %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Account Register Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
@@ -67,6 +73,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--copyright end here-->
 </body>
 </html>
+{% endif %}
 {% endblock navbar %}
 {% block content %}
 
