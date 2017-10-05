@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^(?P<denuncia_id>[0-9]+)/$', login_required(detail), name='detail'),
     url(r'^check_pubs/$', check_pubs, name='check_pubs'),
 	url(r'^detalles/', listaDetalles, name='listaDetalles'),
-	url(r'^contacto', contacto, name='contacto'),
-	url(r'^nosotros', nosotros, name='nosotros'),
+	url(r'^contacto', login_required(contacto), name='contacto'),
+	url(r'^nosotros', login_required(nosotros), name='nosotros'),
 	url(r'^terminos', terminos, name='terminos'),
 ]
