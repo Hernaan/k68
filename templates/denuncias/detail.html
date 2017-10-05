@@ -1,5 +1,9 @@
 {% extends 'base/base.html' %}
 {% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/static/alertify/js/alertify.min.js"></script>
+<link rel="stylesheet" href="/static/alertify/css/alertify.core.css">
+<link rel="stylesheet" href="/static/alertify/css/alertify.default.css">
 <div class="container">  
 <br>
 <div style="overflow-x:auto;">
@@ -61,7 +65,7 @@
   <body>
     <div id="floating-panel">
     <b>Modo de viaje: </b>
-    <select id="mode">
+    <select id="mode" class="form-control">
       <option value="DRIVING">Conduccion</option>
       <option value="WALKING">Caminata</option>
       <option value="BICYCLING">Bicicleta</option>
@@ -98,7 +102,7 @@
           if (status == 'OK') {
             directionsDisplay.setDirections(response);
           } else {
-            window.alert('No se encontro una ruta ' + status);
+            alertify.alert('No hay rutas disponibles!')
           }
         });
       }
