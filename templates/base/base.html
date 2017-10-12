@@ -53,11 +53,11 @@
 					<li class="menu-title">Emergencias K68</li>
 					<li><a class="active" href="{% url 'denuncias:index' %}"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
 					<li><a href="{% url 'denuncias:nosotros' %}"><i class="glyphicon glyphicon-info-sign"></i> Nosotros </a></li>
-					<li><a href="{% url 'denuncias:denuncia_crear' %}"><i class="glyphicon glyphicon-briefcase"></i> Realizar denuncia </a></li>
+					<li><a href="{% url 'denuncias:denuncia_crear' %}"><i class="glyphicon glyphicon-fire"></i> Realizar denuncia </a></li>
 					{% if perms.denuncia.add_denuncia %}
-					<li><a href="{% url 'denuncias:listar' %}"><i class="glyphicon glyphicon-eye-open"></i> Listar Denuncia </a></li>
+					<li><a href="{% url 'denuncias:listar' %}"><i class="glyphicon glyphicon-paperclip"></i> Listar Denuncia </a></li>
 					{% endif %}
-					<li><a href="http://bomberosk68caacupe.blogspot.com/"><i class="glyphicon glyphicon-picture"></i> Blog</a></li>
+					<li><a href="http://bomberosk68caacupe.blogspot.com/"><i class="glyphicon glyphicon-bold"></i> Blog</a></li>
 					<li><a href="{% url 'denuncias:contacto' %}"><i class="glyphicon glyphicon-envelope"></i> Contacto </a></li>
 					<li><a href="{% url 'logout' %}" class="sign-in popup-top-anim"><i class="glyphicon glyphicon-edit"></i> Salir</a></li>
 				</ul>
