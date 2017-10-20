@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings 
 class Servicio(models.Model):
 	servicio = models.CharField(max_length=100)
 	
@@ -24,7 +25,7 @@ class Denuncia(models.Model):
 	lat = models.CharField('Longitud', max_length=100)
 	lng = models.CharField('Latitud', max_length=100)
 	fecha = models.DateTimeField('Fecha de creacion', auto_now_add=True)
-	user = models.ForeignKey(User, verbose_name='Usuario', related_name='denuncias', default=True)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
 	dn_servicio = models.ForeignKey(Servicio)
 	dn_tiposervicio = models.ForeignKey(TipoServicio)
 

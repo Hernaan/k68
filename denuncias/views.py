@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import permission_required
 from django.utils.decorators import method_decorator
 from datetime import datetime
 from django.http import JsonResponse
+from django.contrib import messages
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponse
 
 class RegistroUsuario(CreateView):
 	model = User
@@ -20,7 +22,7 @@ class RegistroUsuario(CreateView):
 
 def index(request):
 	return render(request, 'denuncias/index.html')
-
+"""
 class DenunciaCreate(SuccessMessageMixin,CreateView):
 	context_object_name = "servicios"
 	model = Denuncia
@@ -33,7 +35,23 @@ class DenunciaCreate(SuccessMessageMixin,CreateView):
 		context = super(DenunciaCreate, self).get_context_data(**kwargs)
 		context['servicios'] = Servicio.objects.all()
 		return context
-
+"""
+def denuncia_create(request):
+	if not request.user.is_authenticated():
+		response = HttpResponse("No tienes permiso para hacer eso.")
+		response.status_code = 403
+		return response
+	form = DenunciaForm(request.POST or None, request.FILES or None)
+	if form.is_valid() and request.user.is_authenticated():
+		instance = form.save(commit=False)
+		instance.user = request.user 
+		instance.save()
+		messages.success(request, "Gracias!!! Ya recibimos tu denuncia !")
+		
+	context = {
+		"form": form
+	}
+	return render(request, "denuncias/denuncias_crear.html", context)
 class listar(ListView):
 	model = Denuncia
 	template_name = 'denuncias/listar_denuncias.html'
